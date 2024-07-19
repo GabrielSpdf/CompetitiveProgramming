@@ -7,6 +7,7 @@ const long long LLINF = 4e18;
 const double EPS = 1e-9;
 
 typedef long long ll;
+typedef unsigned long long ull;
 typedef vector<int> vi;
 typedef pair<int, int> ii;
 typedef vector<ii> vii;
