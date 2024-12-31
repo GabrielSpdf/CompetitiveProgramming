@@ -13,7 +13,7 @@ typedef vector<int> vi;
 typedef pair<int, int> ii;
 typedef vector<ii> vii;
 
-int seg[MAX], v[MAX];
+int seg[4*MAX], v[MAX];
 
 
 ll build(ll p, ll l, ll r){
