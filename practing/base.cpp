@@ -19,7 +19,7 @@ void setIO(string s) {
 }
 
 void solve(){
-
+	cout << "teste\n";
 
 }
 
