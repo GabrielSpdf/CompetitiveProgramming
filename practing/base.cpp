@@ -12,6 +12,7 @@ typedef vector<ll> vll;
 typedef vector<vll> vvll;
 typedef pair<ll, ll> pll;
 typedef vector<pll> vpll;
+typedef vector<bool> vbl;
 
 void setIO(string s) {
 	freopen((s + ".in").c_str(), "r", stdin);
@@ -19,7 +20,7 @@ void setIO(string s) {
 }
 
 void solve(){
-	cout << "teste\n";
+
 
 }
 
