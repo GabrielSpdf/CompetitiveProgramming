@@ -113,6 +113,6 @@ contest_dir="$1"
 end_char="${2:-d}"
 
 # Call create_files with the extracted template and params
-create_files "$contest_dir" "$end_char"
+create_files "$contest_dir" "$end_char" "$TEMPLATE_FILE" "$TEMPLATE_NAME"
 
 
