@@ -47,10 +47,10 @@ void solve(){
 
 	bool left=false, right=false, top=false, bottom=false;
 	if(abs(t.x1-0)<(rw-t.x2)){ // mais perto da esquerda
-		left=true;	
+		right=true;	
 	}
-	else right=true;
-	if(abs(t.y1-0)<(rh-t.y2)){ // mais perto do topo
+	else left=true;
+	if(abs(t.y1-0)<(rh-t.y2)){ 
 		top=true;
 	}
 	else bottom=true;
@@ -76,20 +76,25 @@ void solve(){
 
 	if(!intersect(t, b)){ cout << 0 << "\n"; return; }
 
-	cerr << "top: " << top << "\n";
-	cerr << "left: " << left << "\n";
-	cerr << "right: " << right << "\n";
-	cerr << "bottom: " << bottom << "\n";
+	/* cerr << "top: " << top << "\n"; */
+	/* cerr << "left: " << left << "\n"; */
+	/* cerr << "right: " << right << "\n"; */
+	/* cerr << "bottom: " << bottom << "\n"; */
 	cerr << b.x1 << " " << b.y1 << " " << b.x2 << " " << b.y2 << "\n";
-	cerr << dst(b.x1, b.y2, t.x2, t.y1) << "\n";
 	
-	/* double dist(ll px1, ll py1, ll px2, ll py2){ */
 	double dist;
-	if(left && bottom) double dist = min(min(double(t.x1-b.x2), dst(b.x2, b.y2, t.x1, t.y1)), double(b.y2-t.y1));
-	else if(left && top) double dist = min(min(double(t.x1-b.x2), dst(b.x2, b.y1, t.x1, t.y2)), double(t.y2-b.y1));
-	else if(right && bottom) double dist = min(min(double(t.x2-b.x1), dst(b.x1, b.y2, t.x2, t.y1)), double(b.y2-t.y1));
-	else if(right && top) double dist = min(min(double(t.x2-b.x1), dst(b.x1, b.y1, t.x2, t.y2)), double(t.y2-b.y1));
-
+	if(left && bottom) dist = dst(b.x2, b.y2, t.x1, t.y1);
+	else if(left && top) dist = dst(b.x2, b.y1, t.x1, t.y2);
+	else if(right && bottom) dist =  dst(b.x1, b.y2, t.x2, t.y1);
+	else if(right && top) dist = dst(b.x1, b.y1, t.x2, t.y2);
+	
+	cerr << "w: " << w << " | width: " << width << " | rw: " << rw << "\n";
+	if(w+width<=rw){ dist = min(min(dist, max(double(b.x2-t.x1), 0.0)), max(double(t.x2-b.x1), 0.0)); cerr << "entrou1\n"; }
+	if(h+length<=rh){ dist = min(min(dist, max(double(b.y2-t.y1), 0.0)), max(double(t.y2-b.y1), 0.0)); cerr << "entrou2\n"; }
+	
+	/* cerr << dst(b.x2, b.y2, t.x1, t.y1) << "\n"; */
+	/* cerr << double(b.y2-t.y1) << "\n"; */
+	/* cerr << double(b.x2-t.x1) << "\n"; */
 	cout << dist << "\n";
 }
 
