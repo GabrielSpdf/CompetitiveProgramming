@@ -2,6 +2,9 @@
 
 using namespace std;
 
+#define pb push_back
+#define all(v) (v).begin(), (v).end() // e.g. sort(all(v));
+
 typedef long long ll;
 typedef unsigned long long ull;
 typedef vector<int> vi;
