@@ -2,19 +2,15 @@
 
 using namespace std;
 
+#define int long long
 #define pb push_back
 #define all(v) (v).begin(), (v).end() // e.g. sort(all(v));
 
-typedef long long ll;
-typedef unsigned long long ull;
 typedef vector<int> vi;
-typedef pair<int, int> pii;
+typedef pair<int, int> ii;
 typedef vector<vi> vvi;
-typedef vector<pii> vpii;
-typedef vector<ll> vll;
-typedef vector<vll> vvll;
-typedef pair<ll, ll> pll;
-typedef vector<pll> vpll;
+typedef vector<ii> vii;
+typedef vector<bool> vbl;
 
 void setIO(string s) {
 	freopen((s + ".in").c_str(), "r", stdin);
@@ -26,7 +22,7 @@ void solve(){
 
 }
 
-int main(){
+signed main(){
 	/* setIO("problemname"); */
     ios_base::sync_with_stdio(false);
     cin.tie(0);
