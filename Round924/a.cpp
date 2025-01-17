@@ -17,8 +17,16 @@ typedef pair<ll, ll> pll;
 typedef vector<pll> vpll;
 
 void solve(){
+	int a, b;
+	cin >> a >> b;
 
+	string ans = "NO";
+	if(a%2==0 || b%2==0){
+		if(a%2==0) if(a/2 != b) ans = "YES";
+		if(b%2==0) if(b/2 != a) ans = "YES";
+	}
 
+	cout << ans << "\n";
 }
 
 int main(){

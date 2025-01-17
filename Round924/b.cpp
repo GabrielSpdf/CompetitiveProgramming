@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -17,7 +18,22 @@ typedef pair<ll, ll> pll;
 typedef vector<pll> vpll;
 
 void solve(){
+	int n;
+	cin >> n;
 
+	set<int> temp;
+	for(int i=0; i<n; i++){
+		int inp1;
+		cin >> inp1;
+		temp.insert(inp1);
+	}
+
+	vi v(temp.begin(), temp.end());
+	map<int, int> ans;
+
+	for(int i=0; i<n; i++){
+		ans[i] = *lower_bound(v.begin(), v.end(), v[i]+n-1);
+	}
 
 }
 
