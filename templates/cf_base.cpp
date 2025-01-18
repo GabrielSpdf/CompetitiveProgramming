@@ -4,9 +4,9 @@ using namespace std;
 
 #define int long long
 #define pb push_back
-#define FORI(n) for(int i=0; i<(n); i++)
-#define FORJ(n) for(int j=0; j<(n); j++)
-#define FORK(n) for(int k=0; k<(n); k++)
+#define FORI(sti, n) for(int i=(sti); i<(n); i++)
+#define FORJ(stj, n) for(int j=(stj); j<(n); j++)
+#define FORK(stk, n) for(int k=(stk); k<(n); k++)
 #define tvi(v) FORI((v).size()) cerr << (v)[i] << " "; cerr << "\n"
 #define tii(val) cerr <<  "(" << (val).first << ", " << (val).second << ")\n";
 #define tvii(v) FORI((v).size()) { tii((v)[i]) } cerr << "\n";
