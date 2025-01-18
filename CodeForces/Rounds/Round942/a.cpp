@@ -2,9 +2,6 @@
 
 using namespace std;
 
-#define pb push_back
-#define all(v) (v).begin(), (v).end() // e.g. sort(all(v));
-
 typedef long long ll;
 typedef unsigned long long ull;
 typedef vector<int> vi;
@@ -17,16 +14,24 @@ typedef pair<ll, ll> pll;
 typedef vector<pll> vpll;
 
 void solve(){
-	int a, b;
-	cin >> a >> b;
-
-	string ans = "NO";
-	if(a%2==0 || b%2==0){
-		if(a%2==0) if(a/2 != b) ans = "YES";
-		if(b%2==0) if(b/2 != a) ans = "YES";
+	int n;
+	cin >> n;
+	vi va(n), vb(n);
+	for(auto &a: va) cin >> a;
+	for(auto &a: vb) cin >> a;
+	
+	int mx=0;
+	for(int i=0; i<n; i++){
+		int temp=0;
+		for(int j=i; j<n; j++){
+			/* cerr << j-i << "\n"; */
+			if(va[i]<=vb[j]){ break; }
+			temp++;
+		}
+		mx=max(mx, temp);
 	}
 
-	cout << ans << "\n";
+	cout << mx << "\n";
 }
 
 int main(){

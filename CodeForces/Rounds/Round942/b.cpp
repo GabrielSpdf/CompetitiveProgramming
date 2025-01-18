@@ -1,10 +1,6 @@
-#include <algorithm>
 #include <bits/stdc++.h>
 
 using namespace std;
-
-#define pb push_back
-#define all(v) (v).begin(), (v).end() // e.g. sort(all(v));
 
 typedef long long ll;
 typedef unsigned long long ull;
@@ -19,22 +15,14 @@ typedef vector<pll> vpll;
 
 void solve(){
 	int n;
-	cin >> n;
-
-	set<int> temp;
-	for(int i=0; i<n; i++){
-		int inp1;
-		cin >> inp1;
-		temp.insert(inp1);
+	string s;
+	cin >> n >> s;
+	int qt=0;
+	for(int i=0; i<(int)s.size(); i++){
+		if(s[i]=='U') qt++;
 	}
-
-	vi v(temp.begin(), temp.end());
-	map<int, int> ans;
-
-	for(int i=0; i<n; i++){
-		ans[i] = *lower_bound(v.begin(), v.end(), v[i]+n-1);
-	}
-
+	if(qt%2) cout << "YES\n";
+	else cout << "NO\n";
 }
 
 int main(){

@@ -1,9 +1,9 @@
-// thinking
-
-#include <algorithm>
 #include <bits/stdc++.h>
 
 using namespace std;
+
+#define pb push_back
+#define all(v) (v).begin(), (v).end() // e.g. sort(all(v));
 
 typedef long long ll;
 typedef unsigned long long ull;
@@ -16,51 +16,48 @@ typedef vector<vll> vvll;
 typedef pair<ll, ll> pll;
 typedef vector<pll> vpll;
 
-void pvi(vll v){
-	cerr << "printing: ";
-	for(int i=0; i<v.size(); i++) cerr << v[i] << " ";
-	cerr << "\n";
+vi calc(int alvo, bool ver){
+	set<int> temp;
+	
+	for(int i=1; i*i<=alvo; i++){
+		if(alvo%i==0){
+			if(i%2==0){
+				temp.insert(i);
+			}
+			if((alvo/i)%2==0){
+				temp.insert(alvo/i);
+			}
+		}
+	}
+	
+	vi v(temp.begin(), temp.end());
+
+	for(int i=0; i<v.size(); i++){
+		v[i] = (v[i]/2) + 1;
+		/* cerr << v[i] << " "; */
+	}
+
+	return v;
 }
 
 void solve(){
-	ll n, k;
-	cin >> n >> k;
-	vll v(n);
-	for(auto &a: v) cin >> a;
+	int n, x;
+	cin >> n >> x;
+	
+	int ans=0;
+	vi v1, v2;
+	v1 = calc(n-x, false);
+	/* cerr << "\n"; */
+	v2 = calc(n-2+x, true);
+	/* cerr << "\n"; */
 
-	sort(v.begin(), v.end());
-	vll aux(n, 0);
-	for(int i=1; i<n; i++){ aux[i]=i*(v[i]-v[i-1]); }
+	set<int> st;
+	for(int i=0; i<v1.size(); i++) if(v1[i]>=x) st.insert(v1[i]);
+	for(int i=0; i<v2.size(); i++) if(v2[i]>=x) st.insert(v2[i]);
 
-	vll pfs(n, 0);
-	for(int i=1; i<n; i++) pfs[i]=pfs[i-1]+aux[i]; // qnt precisa no total
-	
-	pvi(aux); pvi(pfs);
-	int last_pos;
-	for(int i=0; i<n; i++){
-		if(k>=pfs[i]){
-			last_pos = i; // i==0 garantido
-		}
-	}
-	
-	ll ans;
-	ll rmng=min(n-last_pos+1, 2LL);
-	if(v.size()==1){ cout << v[0]+k << "\n"; return; }
-	if(last_pos==0){ ans=*min_element(v.begin(), v.end())+k; cerr << "nem no primeiro\n"; } // nao bate nem no primeiro lvl
-	else{
-		if(upper_bound(pfs.begin(), pfs.end(), k)==pfs.end()){ // k ja chegou chegou/passou no ultimo lvl
-			/* cerr << pfs[pfs.size()-1] << "\n"; */
-			cerr << "chego/passou\n";
-			ans = *max_element(v.begin(), v.end());
-			rmng = min((k-pfs[pfs.size()-1]), 2LL);
-		}
-		else{ ans = v[last_pos]; cerr << "foi ate um lugar\n"; }
-	}
-	
-	cerr << "ans: " << ans << "\n";
-	cerr <<  "rmng: " << rmng << "\n";
-	ans+=rmng;
-	cout << (n*ans)-(n-1) << "\n";
+	cout << st.size() << "\n";
+
+	/* cout << ans << "\n"; */
 }
 
 int main(){
