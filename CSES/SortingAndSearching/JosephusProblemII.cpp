@@ -47,8 +47,7 @@ int fselect(int target){
 
 void solve(){
 	int n, k;
-	cin >> n;
-	k = 1;
+	cin >> n >> k;
 
 	fenwicks.assign(n+1, 0LL);
 	FORI(1, n+1) fupdate(i, 1);
