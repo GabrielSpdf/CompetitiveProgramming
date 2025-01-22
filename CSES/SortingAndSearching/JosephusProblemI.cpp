@@ -1,3 +1,5 @@
+// Not solved yet
+
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -19,36 +21,41 @@ typedef vector<vi> vvi;
 typedef vector<ii> vii;
 typedef vector<bool> vbl;
 
+void vprint(vi& v1, vi& v2){
+	FORI(0, v1.size()){ cout << v1[i] << " "; }
+	FORI(0, v2.size()){ cout << v2[i] << " "; }
+}
+
 void solve(){
 	int n;
-	string s;
-	cin >> n >> s;
-
+	cin >> n;
 	vi v(n);
-	FORI(0, n){
-		v[i] = s[i]-0x30;
+	iota(v.begin(), v.end(), 1);
+	
+	vi three_odd, one_odd;
+	int idx=0, jump=4;
+	while(idx<n){
+		one_odd.pb(v[idx]);
+		idx+=jump;
 	}
-
-	vi pfs(n+1, 0);
-	map<int, int> mp;
-	mp[0]++;
-	int ans=0;
-	FORI(1, n+1){
-		pfs[i] = pfs[i-1] + v[i-1];
-		
-		ans += mp[pfs[i]-i];
-		mp[pfs[i]-i]++;
+	idx=2;
+	jump+=2;
+	while(idx<n){
+		three_odd.pb(v[idx]);
+		idx+=jump;
 	}
 	
-	cout << ans << "\n";
+	FORI(0, n) if(!(v[i]%2)) cout << v[i] << " ";
+	if(n%2) vprint(one_odd, three_odd);
+	else vprint(three_odd, one_odd);
+	cout << "\n";
 }
 
 signed main(){
     ios_base::sync_with_stdio(false);
     cin.tie(0);
 	
-	int t; cin >> t; while(t--)
-		solve();
+	solve();
 
     return 0;
 }
