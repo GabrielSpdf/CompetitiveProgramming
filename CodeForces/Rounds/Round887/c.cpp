@@ -41,22 +41,19 @@ void solve(){
 			mp[v[i]] = mp[v[i+1]];
 		}
 	}
-
-	/* for(auto [a, b]: mp){ */
-	/* 	cerr << a << " " << b.first << " " << b.second; */ 
-	/* 	cerr << "\n"; */
-	/* } */
 	
 	int x=1, j=mp[x].second;
 	FORI(0, k){
-		while(mp.find(x+j)!=mp.end()){
-			auto it = --mp.upper_bound(x+j);
+		if(mp.find(x)!=mp.end()){
+			auto it = --mp.lower_bound(mp[x].first+mp[x].second);
 			j = (*it).second.second;
-			/* cerr << "x+j: " << x+j << " | it.first: " << (*it).first << " | j: " << j << "\n"; */
+		}
+		else if(mp.find(x+j)!=mp.end()){
+			auto it = --mp.lower_bound(mp[x+j].first+mp[x+j].second);
+			j = (*it).second.second;
 		}
 		x+=j;
-		/* cerr << "j: " << j << " "; */
-		/* cerr << x << " "; */
+		cerr << x << " ";
 	}
 	cout << x << "\n";
 }
