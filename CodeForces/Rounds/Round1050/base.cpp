@@ -4,6 +4,8 @@ using namespace std;
 
 #define int long long
 
+typedef vector<int> vi;
+
 void solve(){
 
 
@@ -13,7 +15,8 @@ signed main(){
     ios_base::sync_with_stdio(false);
     cin.tie(0);
 	
-	solve();
+	int t; cin >> t; while(t--)
+		solve();
 
     return 0;
 }
