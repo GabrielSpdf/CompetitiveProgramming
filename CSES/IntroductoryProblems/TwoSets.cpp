@@ -2,74 +2,64 @@
 
 using namespace std;
 
-typedef long long ll;
-typedef unsigned long long ull;
-typedef vector<int> vi;
-typedef pair<int, int> pii;
-typedef vector<vi> vvi;
-typedef vector<pii> vpii;
-typedef vector<ll> vll;
-typedef vector<vll> vvll;
-typedef pair<ll, ll> pll;
-typedef vector<pll> vpll;
-
-
 void solve(){
 	int n;
 	cin >> n;
+
+	int t_sum = n*(n+1)/2;
+
+	if(t_sum%2){
+		cout << "NO\n";
+		return;
+	}
 	
-	if(n%2==0){
-		if((n/2)%2) return void(cout << "NO\n");
-		cout << "YES\n";
-		cout << n/2 << "\n";
+	cout << "YES\n";
+
+	vector<int> st1, st2;
+
+	if(n%4==0){
 		for(int i=0; i<n/4; i++){
-			cout << i+1 << " ";
+			st1.push_back(i+1);
+			st1.push_back(n-i);
 		}
-		for(int i=0; i<n/4; i++){
-			cout << n-i << " ";
-		}
-		cout << "\n";
-		cout << n/2 << "\n";
-		for(int i=0; i<n/4; i++){
-			cout << i+n/4+1 << " ";
-		}
-		for(int i=0; i<n/4; i++){
-			cout << n-n/4-i << " ";
+		for(int i=n/4; i<n/2; i++){
+			st2.push_back(i+1);
+			st2.push_back(n-i);
 		}
 	}
 	else{
-		if(((n-3)/2)%2) return void(cout << "NO\n");
-		cout << "YES\n";
-		cout << ((n-3)/2 + 2) << "\n";
-		cout << "1 2 ";
-		for(int i=0; i<n/4; i++){
-			cout << i+4 << " ";
+		st1.push_back(1);
+		st1.push_back(2);
+		st2.push_back(3);
+
+		int m = (n-3)/4;
+		for(int i=0; i<m; i++){
+			st1.push_back(4+i);
+			st1.push_back(n-i);
 		}
-		for(int i=0; i<n/4; i++){
-			cout << n-i << " ";
+		for(int i=0; i<m; i++){
+			st2.push_back(4+m+i);
+			st2.push_back(n-m-i);
 		}
-		
-		int tam=(n-3)/2 + 1;
-		cout << "\n";
-		cout << tam << "\n";
-		cout << "3 ";
-		for(int i=0; i<n/4; i++){
-			cout << i+(n/4)+4 << " ";
-		}
-		for(int i=0; i<n/4; i++){
-			cout << n-(n/4)-i << " ";
-		}
-		cout << "\n";
 	}
+
+	cout << st1.size() << "\n";
+	for(auto &a: st1){
+		cout << a << " ";
+	}
+	cout << "\n";
+	cout << st2.size() << "\n";
+	for(auto &a: st2){
+		cout << a << " ";
+	}
+	cout << "\n";
 }
 
 int main(){
-	/* setIO("problemname"); */
     ios_base::sync_with_stdio(false);
     cin.tie(0);
 	
-	/* int t; cin >> t; while(t--) */
-		solve();
+	solve();
 
     return 0;
 }
